@@ -1,0 +1,105 @@
+一、在github上创建一个存储库库
+1.单击start a project
+2.输入存储库名称，输入对这个库的描述，选择公开的，单击create repository
+
+二、安装Git Bash(windows)
+1.打开git-scm.com
+单击电脑那里就会弹出下载框，如果没有弹出就在接下来的页面选择合适自己的版本，我是64位的电脑
+2.选择xx-bit GIt for Windows Setup(xx电脑是多少位就选择多少) 
+
+要说一下Git Bash是命令行操作模式，也有图形界面叫Git GUI，毕竟命令行模式装13会显得很成功的样子(〃’▽’〃)
+
+三、配置Git Bash与github的连接（通俗的讲就是把本地库和github存储库连起来）
+
+1.首先Git Bash下载完运行后会弹出一个黑黑黑黑黑黑的窗口，我们接下来的操作都是用它完成的，
+之前我们下载它的目的就是为了让本地库与github库连接起来，方便我们提交代码。
+而github就是用SSH KEY与我们的电脑连接起来的，下面我们就要在本地生成一个SSH KEY 
+
+2.输入$ ssh-keygen -t rsa -C “你注册github时的邮箱地址” 
+这里真的真的有重点，我真的真的踩了很多坑！ 
+ssh-keygen后面有空格 
+-t后面有空格 
+rsa后面有空格 
+
+接下来是问你生成的key要保存在哪个路径，
+如果直接敲回车就是默认路径/c/Users/Administrator/.ssh/id_rsa.我是直接敲的回车就存在这里。 
+
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again:
+
+接着呢就会提示你输入密码，按两次回车就可以了我们不输入密码，这样我们每次提交或者下载代码的时候就不用输入密码了，
+当然你也可以输入密码，这样每次操作都需要密码（注意这个密码跟你登录github的密码是不同的哦） 
+
+3.我是存在默认路径下，现在我们就去找到它
+
+4.打开id_rsa.pub，复制里面的全部内容
+
+5.打开我们的github，鼠标移到头像的地方，选择settings
+
+6.选择SSH and GPG keys
+
+7.选择new ssh key，创建一个新的key
+
+8.填入自己的标题，随便都可以的。
+然后将在id_rsa.pub里的全部内容粘贴在key下面的框内，填好后单击add ssh key 
+
+9.这样我们就将本地库与github库用ssh key连接起来了 
+
+
+四、测试ssh key
+
+
+1.输入 ssh -T git@github.com  （注意不是输入自己的邮箱哦
+ 
+
+2.接下来会提示你 
+The authenticity of host ‘github.com (xxx.xxx.xxx.xxx)’ can’t be established. 
+RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxx. 
+Are you sure you want to continue connecting (yes/no)?  
+
+输入yes即可 
+
+
+3.如果你设了密码的话会提示输入密码吧，如果和我一样没有设密码就会出现以下提示You’ve successfully authenticated, but GitHub does not provide shell access这样就成功了
+
+4.输入 
+git config –global user.name “你github的名字” （注意前边是“- -global”，） 
+git config –global user.email “你的github邮箱地址” 
+
+
+5.接下来就要操作把我们一开始在github建的库搞到本地，方便我们进行操作 
+  
+
+5.1我习惯把我的东西放在f盘，所以我在f盘建立了一个文件夹专门存储在github下载下来的库，输入f:/Github，这个自由选择哦
+
+5.2然后我们去github把我们创建的库的地址复制下来
+
+5.3输入git clone https://xxxxxxxxxxx （后面是你复制下来的地址
+ 
+5.4这样我定位的F盘Github文件夹下就有个叫test的文件夹了，这个其实就是一开始我们在github创建的那个叫test的库
+
+6.我们可以试着在这个文件夹里创建一个文件并上传到我们的github的test库中
+
+6.1我们将文件位置定位到test中，然后输入ls来查看test文件夹中有什么文件
+cd f:/Github/test
+
+ls
+
+可以看到有我们创建的文本文档tet.txt 
+
+6.2输入 git add tet.txt
+
+6.3输入 git commit -m “注释”（这里因为我之前创建了一个叫tet的所以我又创建了一个叫tes的文件夹） 
+
+6.4、输入git push origin master，会出现输入邮箱地址的提示
+
+输入后会弹出输入密码的框，输入github的密码
+
+7.我们一起去github看看我们从本地上传到github的文件 
+如果你还停留在某个页面因为英文不好不知道点哪里，一头雾水找不到我们的库的时候，点下图的小黑猫就可以 
+
+8.这时候其实我们真的成功了，我们可以总结一下 
+ 
+ 以后我们就先创建一个库把它档到本地，然后将我们的代码放到库的对应的文件夹中，
+然后git add ，git commit -m “注释注释注释啊 ” 、
+最后git push origin master，我们就能将本地的代码提交到github库上了 
