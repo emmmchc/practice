@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1541329039 source:c:\users\12400\desktop\人员信息管理系统\人员信息管理系统\main.cpp
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<string>
+	<fstream>
+
