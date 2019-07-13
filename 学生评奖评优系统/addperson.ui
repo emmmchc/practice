@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addPerson</class>
+ <widget class="QDialog" name="addPerson">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1162</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>增加学生信息</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

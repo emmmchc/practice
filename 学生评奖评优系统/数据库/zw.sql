@@ -1,0 +1,9 @@
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (0, '无');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (1, '班长');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (2, '团支书');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (3, '学习委员');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (4, '组织委员');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (5, '生活委员');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (6, '体育委员');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (7, '宣传委员');
+INSERT INTO `zw`(`ZWId`, `ZW`) VALUES (8, '心理委员');

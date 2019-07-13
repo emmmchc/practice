@@ -1,0 +1,1 @@
+INSERT INTO `caculation`(`lastD`, `lastZ`, `lastT`, `nextD`, `nextZ`, `nextT`, `leftLoc`, `rightLoc`, `firstRange`, `secondRange`, `thirdRange`, `firstMoney`, `secondMoney`, `thirdMoney`, `GQTYRange`, `XXGBRange`, `SHSRange`) VALUES ('0.5', '0.6', '0.4', '0.5', '0.5', '0.6', 'A2', 'J57', '4', '20', '40', '1500', '750', '300', '30', '40', '50');
