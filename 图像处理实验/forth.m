@@ -1,0 +1,78 @@
+%清空工作区
+clear; 
+%清空命令区
+clc; 
+
+I_rgb = imread('map.bmp');
+figure();
+imshow(I_rgb); %显示原图
+title('原始图像');
+
+%将彩色图像从RGB转化到ycbcr彩色空间
+I_ycbcr = rgb2ycbcr(I_rgb);
+
+%进行K-mean聚类将图像分割成6个区域
+cbcr = double(I_ycbcr(:,:,2:3));
+nrows = size(cbcr,1);
+ncols = size(cbcr,2);
+cbcr = reshape(cbcr,nrows*ncols,2);
+
+nColors = 6; %分割的区域个数为6
+%调用Kmeans函数
+%cbcr nrows*ncols的数据矩阵
+%Idx nrows*1的向量,存储的是每个点的聚类标号
+[cluster_idx ,cluster_center] = kmeans(cbcr,nColors,'distance','sqEuclidean','Replicates',3);     %重复聚类3次
+pixel_labels = reshape(cluster_idx,nrows,ncols);
+figure();
+imshow(pixel_labels,[]), title('聚类结果');
+
+%显示分割后的各个区域
+segmented_images = cell(1,3);
+rgb_label = repmat(pixel_labels,[1 1 3]);
+
+for k = 1:nColors
+color = I_rgb;
+color(rgb_label ~= k) = 0;
+segmented_images{k} = color;
+end
+
+
+
+m1 = segmented_images{1};
+m1 = black2white(m1);
+figure;
+imshow(m1);
+
+m2 = segmented_images{2};
+m2 = black2white(m2);
+figure;
+imshow(m2);
+
+m3 = segmented_images{3};
+m3 = black2white(m3);
+figure;
+imshow(m3);
+
+m4 = segmented_images{4};
+m4 = black2white(m4);
+figure;
+imshow(m4);
+
+m5 = segmented_images{5};
+m5 = black2white(m5);
+figure;
+imshow(m5);
+
+m6 = segmented_images{6};
+m6 = black2white(m6);
+figure;
+imshow(m6);
+
+
+
+% figure(),imshow(segmented_images{1}), title('分割结果——区域1');
+% figure(),imshow(segmented_images{2}), title('分割结果——区域2');
+% figure(),imshow(segmented_images{3}), title('分割结果——区域3'); 
+% figure(),imshow(segmented_images{4}), title('分割结果——区域4');
+% figure(),imshow(segmented_images{5}), title('分割结果——区域5');
+% figure(),imshow(segmented_images{6}), title('分割结果——区域6');
